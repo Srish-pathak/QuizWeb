@@ -4,59 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz Pariksha</title>
-
-  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Favicon (optional) -->
-  <!-- <link rel="icon" href="favicon.ico" type="image/x-icon" /> -->
-
-  <!-- Meta description (SEO) -->
-  <meta name="description" content="Quiz Pariksha – Master your skills through interactive quizzes!" />
 </head>
 <body>
 
-  <!-- Fixed Site Header -->
-  <header class="header">
-    <a href="#" class="logo">Quiz<span style="color:#c40094;">.</span></a>
-
-    <nav class="navbar">
-      <a href="#" class="active">Home</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
-
-  <!-- Main Content -->
   <main class="main">
+    <header class="header">
+      <a href="#" class="logo">Quiz.</a>
+
+      <nav class="navbar">
+        <a href="#" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <div class="container">
+    <section class="quiz-section">
+      <div class="quiz-box">
+          <h1>Codehal Quiz</h1>
+          <div class="quiz-header">
+            <span>Quiz Website Tutorials</span>
+            <span class="header-score">Score: 0 / 5</span>
+          </div>
+          
+          <h2 class="question-text">What does HTML stand for?</h2>
+
+          <div class="option-list">
+            <div class="option">
+                 <span>A. Hyper Type Multi Language</span>
+            </div>
+            <div class="option">
+                 <span>B. Hyper Text Markup Language</span>
+            </div>
+           <div class="option">
+                 <span>C. Home Tool Markup Language</span>
+           </div>
+           <div class="option">
+                 <span>D. Hyperlink and Text Markup Language</span>
+           </div>
+          </div>
+
+          <div class="quiz-footer">
+              <span class="quiz-total">1 of 5 Questions</span>
+               <button class="next-btn">Next</button>
+           </div>
+
+        </div>
+    </section>
+
     <section class="home">
       <div class="home-content">
         <h1>Quiz Website</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, cumque! Quisquam ipsa alias, et fuga
-          architecto unde maxime cum voluptates modi id itaque vero necessitatibus laudantium illum assumenda
-          cumque.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, cumque. Quisquam ipsa alias, et fuga laboriosam 
+          architecto unde maxime cum voluptates modi id itaque vero necessitatibus laudantium illum assumenda cumque.</p>
         <button class="start-btn">Start Quiz</button>
       </div>
     </section>
+    </div>
   </main>
 
-  <!-- Popup -->
   <div class="popup-info">
-    <h2>Quiz Guide</h2>
-    <span class="info">1. Lorem ipsum dolor sit amet consectetur.</span>
-    <span class="info">2. Lorem ipsum dolor sit amet consectetur adipisicing.</span>
-    <span class="info">3. Lorem ipsum dolor sit amet cons.</span>
-    <span class="info">4. Lorem ipsum dolor sit amet consectetur adipisicing.</span>
-    <span class="info">5. Lorem ipsum dolor sit amet consectetur adipisicing.</span>
-
-    <div class="btn-group">
-      <button class="info-btn exit-btn">Exit Quiz</button>
-      <button class="info-btn continue-btn">Continue</button>
-    </div>
+          <h2>Quiz Guide</h2>
+             <span class="info">1. Lorem ipsum dolor sit amet consectetur.</span>
+             <span class="info">2. Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+             <span class="info">3. Lorem ipsum dolor sit amet cons.</span>
+             <span class="info">4. Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+             <span class="info">5. Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+             <div class="btn-group">
+                 <button class="info-btn exit-btn">Exit Quiz</button>
+                 <a href="#" class="info-btn continue-btn">Continue</a>
+              </div>
   </div>
 
-  <!-- Scripts -->
   <script src="questions.js"></script>
   <script src="script.js"></script>
 </body>
