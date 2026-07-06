@@ -137,6 +137,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: .3s ease;
+  z-index: 101;
 }
 
 .popup-info.active{
@@ -164,7 +165,7 @@ body {
   align-items: center;
   border-top:1px solid #999;
   margin-top: 10px;
-  padding:15px 0 
+  padding: 15px 0;
 }
 
 .popup-info .btn-group .info-btn {
@@ -211,9 +212,6 @@ body {
   height: 100vh;
   width: 100%;
   transition: 0.8s ease-in-out;
-  /* position: fixed;
-  top: 0;
-  left: 0;*/
   z-index: 100;
   transition-delay: 0.25s;
 }
@@ -222,24 +220,24 @@ body {
   left: 0;
 }
 
-.quiz-section.quiz-box{
+.quiz-box{
   position: relative;
-  width: 500px;
+  width: 550px;
   background: transparent;
   border: 2px solid #c40094;
   border-radius: 6px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   padding: 20px 30px;
   pointer-events: none;
   transform: scale(.9);
+  opacity: 0;
 }
 
-
-.quiz-section.quiz-box.active{
+.quiz-box.active{
   opacity: 1;
   pointer-events: auto;
-  transforn: scale(1);
+  transform: scale(1);
   transition: 1s ease;
   transition-delay: 1s;
 }
@@ -249,9 +247,10 @@ body {
   text-align: center;
   background: linear-gradient(45deg, transparent, #c40094, transparent);
   border-radius: 6px;
+  padding: 15px 0;
 }
 
-.quiz-box.quiz-header{
+.quiz-header{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -260,37 +259,63 @@ body {
   margin-bottom: 20px;
 }
 
-.quiz-header.span{
+.quiz-header span{
   font-size: 18px;
   font-weight: 500;
 }
 
-.quiz-header.header-score{
+.header-score{
   background: #c40094;
   border-radius: 3px;
-  padding: 7px;
+  padding: 7px 12px;
+  font-weight: 600;
 }
 
-.quiz-box.question-text{
+.question-text{
   font-size: 24px;
   font-weight: 600;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.option-list {
+  margin-bottom: 20px;
 }
 
 .option-list .option{
   width: 100%;
-  padding: 12px;
+  padding: 12px 15px;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 4px;
-  font-size: 17px;
+  font-size: 16px;
   margin: 15px 0;
-  margin: pointer;
+  cursor: pointer;
   transition: .3s;
+  color: #fff;
 }
 
 .option-list .option:hover{
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(5px);
+}
+
+.option-list .option.selected {
+  background: rgba(196, 0, 148, 0.3);
+  border-color: #c40094;
+}
+
+.option-list .option.correct {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: #4caf50;
+  color: #4caf50;
+}
+
+.option-list .option.incorrect {
+  background: rgba(244, 67, 54, 0.3);
+  border-color: #f44336;
+  color: #f44336;
 }
 
 .quiz-box .quiz-footer{
@@ -302,7 +327,7 @@ body {
   margin-top: 30px;
 }
 
-.quiz-footer.question-total{
+.quiz-total{
   font-size: 16px;
   font-weight: 600;
 }
@@ -317,13 +342,93 @@ body {
   font-size: 16px;
   color: rgba(255, 255, 255, .3);
   font-weight: 600;
-  cursor: pointer;
-  /* pointer-events: none; */
+  cursor: not-allowed;
   transition: .5s;
 }
 
-.quiz-footer.next-btn:hover{
+.quiz-footer .next-btn:hover:not(:disabled){
   background: #950170;
   border-color: #950170;
+  color: #fff;
+}
 
+/* Result Box Styles */
+.result-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.result-box h1 {
+  font-size: 48px;
+  margin-bottom: 30px;
+  background: linear-gradient(45deg, transparent, #c40094, transparent);
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.score-display {
+  margin-bottom: 40px;
+}
+
+.score-display h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #c40094;
+}
+
+.score-text {
+  font-size: 64px;
+  font-weight: 800;
+  color: #c40094;
+  margin-bottom: 10px;
+}
+
+.percentage {
+  font-size: 32px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.result-message {
+  font-size: 20px;
+  margin: 20px 0;
+  color: #fff;
+  font-weight: 500;
+}
+
+.result-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.restart-btn, .home-btn {
+  width: 150px;
+  height: 50px;
+  border: 2px solid #c40094;
+  background: transparent;
+  color: #c40094;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.restart-btn:hover {
+  background: #c40094;
+  color: #fff;
+  box-shadow: 0 0 10px #c40094;
+  transform: scale(1.05);
+}
+
+.home-btn:hover {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+  transform: scale(1.05);
 }
