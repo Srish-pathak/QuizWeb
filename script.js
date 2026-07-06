@@ -1,28 +1,38 @@
-// DOM Elements Selection
-const startBtn = document.querySelector('.start-btn');
-const popupInfo = document.querySelector('.popup-info');
-const exitBtn = document.querySelector('.exit-btn');
-const main = document.querySelector('.main');
-const continueBtn = document.querySelector('.continue-btn');
-const quizSection = document.querySelector('.quiz-section');
-const quizBox = document.querySelector('.quiz-box');
+// ============ Page Load - Initialize High Score Display ============
+window.addEventListener('DOMContentLoaded', function() {
+    const highestScore = getHighestScore();
+    const highScoreDisplay = document.querySelector('.high-score-display');
+    
+    if (highScoreDisplay && highestScore) {
+        highScoreDisplay.textContent = `🏆 High Score: ${highestScore.score}/${highestScore.totalQuestions}`;
+    }
+});
 
-const questionText = document.querySelector('.question-text');
-const optionList = document.querySelector('.option-list');
-const quizTotal = document.querySelector('.quiz-total');
-const headerScore = document.querySelector('.header-score');
-const nextBtn = document.querySelector('.next-btn');
+// ============ DOM Elements Selection ============
+let startBtn, popupInfo, exitBtn, main, continueBtn, quizSection, quizBox;
+let questionText, optionList, quizTotal, headerScore, nextBtn;
+
+function initializeDOMElements() {
+    startBtn = document.querySelector('.start-btn');
+    popupInfo = document.querySelector('.popup-info');
+    exitBtn = document.querySelector('.exit-btn');
+    main = document.querySelector('.main');
+    continueBtn = document.querySelector('.continue-btn');
+    quizSection = document.querySelector('.quiz-section');
+    quizBox = document.querySelector('.quiz-box');
+    questionText = document.querySelector('.question-text');
+    optionList = document.querySelector('.option-list');
+    quizTotal = document.querySelector('.quiz-total');
+    headerScore = document.querySelector('.header-score');
+    nextBtn = document.querySelector('.next-btn');
+    
+    attachEventListeners();
+}
 
 let questionCount = 0;
 let questionNumb = 1;
 let userScore = 0;
 let selectedOption = null;
-let currentQuizAttempt = {
-    score: 0,
-    totalQuestions: 0,
-    date: '',
-    percentage: 0
-};
 
 // ============ LocalStorage Functions ============
 
@@ -130,59 +140,66 @@ function displayStatistics() {
     return statsHTML;
 }
 
+// ============ Event Listeners Attachment ============
+function attachEventListeners() {
+    if (startBtn) {
+        startBtn.onclick = () => {
+            popupInfo.classList.add('active');
+            main.classList.add('active');
+        }
+    }
+    
+    if (exitBtn) {
+        exitBtn.onclick = () => {
+            popupInfo.classList.remove('active');
+            main.classList.remove('active');
+        }
+    }
+    
+    if (continueBtn) {
+        continueBtn.onclick = () => {
+            console.log('Continue button clicked');
+            quizSection.classList.add('active');
+            popupInfo.classList.remove('active');
+            main.classList.remove('active');
+            quizBox.classList.add('active');
+
+            showQuestions(0);
+            questionCounter(1);
+            headerScore.textContent = `Score: 0 / ${questions.length}`;
+        }
+    }
+    
+    if (nextBtn) {
+        nextBtn.onclick = () => {
+            if (selectedOption === null) {
+                alert('कृपया एक विकल्प चुनें! / Please select an option!');
+                return;
+            }
+
+            if (questionCount < questions.length - 1) {
+                questionCount++;
+                showQuestions(questionCount);
+                questionNumb++;
+                questionCounter(questionNumb);
+                selectedOption = null;
+                
+                // Reset next button state
+                nextBtn.style.background = 'rgba(255, 255, 255, .1)';
+                nextBtn.style.color = 'rgba(255, 255, 255, .3)';
+                nextBtn.style.pointerEvents = 'none';
+            }
+            else {
+                showResultBox();
+            }
+        }
+    }
+}
+
 // ============ Quiz Functions ============
-
-// Start Quiz Button Click
-startBtn.onclick = () => {
-    popupInfo.classList.add('active');
-    main.classList.add('active');
-}
-
-// Exit Button Click
-exitBtn.onclick = () => {
-    popupInfo.classList.remove('active');
-    main.classList.remove('active');
-}
-
-// Continue Button Click
-continueBtn.onclick = () => {
-    quizSection.classList.add('active');
-    popupInfo.classList.remove('active');
-    main.classList.remove('active');
-    quizBox.classList.add('active');
-
-    showQuestions(0);
-    questionCounter(1);
-    headerScore.textContent = `Score: 0 / ${questions.length}`;
-}
-
-// Next Button Click
-nextBtn.onclick = () => {
-    if (selectedOption === null) {
-        alert('कृपया एक विकल्प चुनें! / Please select an option!');
-        return;
-    }
-
-    if (questionCount < questions.length - 1) {
-        questionCount++;
-        showQuestions(questionCount);
-        questionNumb++;
-        questionCounter(questionNumb);
-        selectedOption = null;
-        
-        // Reset next button state
-        nextBtn.style.background = 'rgba(255, 255, 255, .1)';
-        nextBtn.style.color = 'rgba(255, 255, 255, .3)';
-        nextBtn.style.pointerEvents = 'none';
-    }
-    else {
-        showResultBox();
-    }
-}
 
 // Fetching Questions and Options from array
 function showQuestions(index) {
-    // Fixed syntax error: questions[index] instead of questions.[index]
     const question = questions[index];
     questionText.textContent = `${question.numb}. ${question.question}`;
 
@@ -335,11 +352,9 @@ function restartQuiz() {
     
     quizBox.classList.add('active');
     
-    // Re-attach event listeners by reinitializing
+    // Re-initialize DOM elements and event listeners
     setTimeout(() => {
-        const newNextBtn = document.querySelector('.next-btn');
-        newNextBtn.onclick = nextBtn.onclick;
-        
+        initializeDOMElements();
         showQuestions(0);
         questionCounter(1);
         headerScore.textContent = `Score: 0 / ${questions.length}`;
@@ -372,4 +387,18 @@ function goHome() {
     `;
     
     headerScore.textContent = `Score: 0 / ${questions.length}`;
+    
+    // Update high score display
+    const highestScore = getHighestScore();
+    const highScoreDisplay = document.querySelector('.high-score-display');
+    if (highScoreDisplay && highestScore) {
+        highScoreDisplay.textContent = `🏆 High Score: ${highestScore.score}/${highestScore.totalQuestions}`;
+    }
+}
+
+// ============ Initialize on Page Load ============
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeDOMElements);
+} else {
+    initializeDOMElements();
 }
