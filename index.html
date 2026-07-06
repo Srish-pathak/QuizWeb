@@ -3,24 +3,149 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quiz Pariksha</title>
+  <title>Quiz Pariksha - Master Your Skills</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
  
   <main class="main">
     <header class="header">
-      <a href="#" class="logo">Quiz.</a>
+      <a href="#home" class="logo">Quiz.</a>
 
       <nav class="navbar">
-        <a href="#" class="active">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
     </header>
 
-    <div class="container">
+    <!-- Home Section -->
+    <section id="home" class="section home-section">
+      <div class="home-content">
+        <h1>Quiz Website</h1>
+        <div class="high-score-display">🏆 High Score: 0/10</div>
+        <p>Master your knowledge with our interactive quiz application. Test yourself on HTML, CSS, JavaScript and more!</p>
+        <button class="start-btn">Start Quiz</button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+      <div class="container-content">
+        <h2>About Quiz Application</h2>
+        <div class="about-content">
+          <div class="about-card">
+            <h3>🎯 Our Mission</h3>
+            <p>We believe in making learning fun and interactive. Our quiz application helps developers test their knowledge and improve their skills in web development.</p>
+          </div>
+          <div class="about-card">
+            <h3>📚 What We Offer</h3>
+            <p>Comprehensive quizzes on HTML, CSS, and JavaScript. Track your progress, view statistics, and compete with yourself to achieve the highest scores.</p>
+          </div>
+          <div class="about-card">
+            <h3>💪 Why Choose Us?</h3>
+            <p>Our platform features instant feedback, performance analytics, score history tracking, and offline functionality using browser localStorage.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+      <div class="container-content">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">📝</div>
+            <h3>Interactive Quizzes</h3>
+            <p>10 comprehensive questions covering HTML, CSS, and JavaScript fundamentals. Multiple choice format with instant feedback.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Performance Analytics</h3>
+            <p>Track your progress with detailed statistics including highest score, average score, and complete attempt history.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">💾</div>
+            <h3>Local Storage</h3>
+            <p>All your quiz attempts and scores are automatically saved in your browser. No login required, data persists across sessions.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">⚡</div>
+            <h3>Fast & Responsive</h3>
+            <p>Lightning-fast performance with a responsive design. Works seamlessly on desktop, tablet, and mobile devices.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🏆</div>
+            <h3>Achievement Tracking</h3>
+            <p>Monitor your learning journey with visual feedback showing excellent (80%+), good (60-80%), and need-improvement scores.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🎨</div>
+            <h3>Beautiful UI</h3>
+            <p>Modern dark theme with smooth animations and intuitive interface. Easy to navigate and visually appealing design.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container-content">
+        <h2>Get In Touch</h2>
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <h3>Contact Information</h3>
+            <div class="info-item">
+              <span class="icon">📧</span>
+              <div>
+                <h4>Email</h4>
+                <p>info@quizapp.com</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="icon">📞</span>
+              <div>
+                <h4>Phone</h4>
+                <p>+91 (123) 456-7890</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="icon">📍</span>
+              <div>
+                <h4>Location</h4>
+                <p>India</p>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="#" class="social-link">GitHub</a>
+              <a href="#" class="social-link">LinkedIn</a>
+              <a href="#" class="social-link">Twitter</a>
+            </div>
+          </div>
+
+          <form class="contact-form">
+            <h3>Send us a Message</h3>
+            <div class="form-group">
+              <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Quiz Container -->
+  <div class="quiz-container">
     <section class="quiz-section">
       <div class="quiz-box">
           <h1>Codehal Quiz</h1>
@@ -53,31 +178,21 @@
 
         </div>
     </section>
+  </div>
 
-    <section class="home">
-      <div class="home-content">
-        <h1>Quiz Website</h1>
-        <div class="high-score-display">🏆 High Score: 0/10</div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, cumque. Quisquam ipsa alias, et fuga laboriosam 
-          architecto unde maxime cum voluptates modi id itaque vero necessitatibus laudantium illum assumenda cumque.</p>
-        <button class="start-btn">Start Quiz</button>
-      </div>
-    </section>
-    </div>
-  </main>
-
+  <!-- Quiz Info Popup -->
   <div class="popup-info">
-          <h2>Quiz Guide</h2>
-             <span class="info">1. आप 10 प्रश्नों का एक क्विज खेलेंगे / You will play a quiz of 10 questions.</span>
-             <span class="info">2. हर सवाल का एक सही जवाब है / Each question has one correct answer.</span>
-             <span class="info">3. आप किसी भी सवाल को skip नहीं कर सकते / You cannot skip any question.</span>
-             <span class="info">4. आपका स्कोर स्वचालित रूप से save होगा / Your score will be automatically saved.</span>
-             <span class="info">5. क्विज पूरा करने के बाद आप अपना performance देख सकते हैं / After completing the quiz, you can see your performance.</span>
-             <div class="btn-group">
-                  <button class="info-btn exit-btn">Exit Quiz</button>
-                  <a href="#" class="info-btn continue-btn">Continue</a>
-               </div>
-   </div>
+    <h2>Quiz Guide</h2>
+    <span class="info">1. आप 10 प्रश्नों का एक क्विज खेलेंगे / You will play a quiz of 10 questions.</span>
+    <span class="info">2. हर सवाल का एक सही जवाब है / Each question has one correct answer.</span>
+    <span class="info">3. आप किसी भी सवाल को skip नहीं कर सकते / You cannot skip any question.</span>
+    <span class="info">4. आपका स्कोर स्वचालित रूप से save होगा / Your score will be automatically saved.</span>
+    <span class="info">5. क्विज पूरा करने के बाद आप अपना performance देख सकते हैं / After completing the quiz, you can see your performance.</span>
+    <div class="btn-group">
+      <button class="info-btn exit-btn">Exit Quiz</button>
+      <a href="#" class="info-btn continue-btn">Continue</a>
+    </div>
+  </div>
 
   <script src="questions.js"></script>
   <script src="script.js"></script>
